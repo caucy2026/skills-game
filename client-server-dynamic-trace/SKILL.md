@@ -67,3 +67,8 @@ Do not claim the reconstructed feature is complete merely because injection succ
 ## 磁盘巡检与现场清理
 
 每次前后台注入/采集前、采集中及结束后，必须执行[磁盘与现场收尾](../client-server-dynamic-trace/references/disk-and-scene-cleanup.md)。及时清理本任务已不用且无活跃使用的旧注入文件；设定有界采集与停写/轮转，禁止长期无界写BIN。清理必须核实际空间释放，不删除活跃探针或未归档证据。
+
+
+## 资源收尾与前台占用
+
+按用户要求，自己创建的APP/进程、临时文件和打开的文件/句柄/数据库事务/socket/锁必须自己收尾，验证后关闭不用实例，尽量后台操作、少占前台，效率第一。执行[统一现场收尾准则](references/disk-and-scene-cleanup.md)，以实际退出/释放/删除回读为准；保留必要证据，不误删活跃资源。该规则不代替产品保存/验收，也不暂停完整目标。

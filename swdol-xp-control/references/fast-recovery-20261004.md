@@ -42,3 +42,23 @@ A reached the original world with helen2 at Changyang (545,569). Credentials-to-
 - Verify every control peer against its actual host VM PID. This login rejected a different VM's connection before succeeding. Never assume the first peer is A.
 
 CPU300 is a reversible diagnostic comparison, not a proven fix or a mandatory injection prerequisite. Do not change server timeouts or system time to conceal the failure.
+
+
+## 2026-10-06 已验证只读采样衔接与媒体选择纠错
+
+本记录是局部成功路线，不是完整冷注入三分钟通过。A同一来宾客户端先由tasklist核PID；现场PID/窗口必须重新发现，不能复用下列历史数字。证据原位：`/private/tmp/original-name-native-bounded-chain-20261005/receipt.json`与`handle-79/series.json`；43项必要证据已归档GitHub main `2bf9fa8ffb63a0549571476aadbbd65f90af79c8`的`document/evidence/20260930-two-new-test-role-gate/current-main346-20261005/`。
+
+- 实际工具路径是分析仓的`tools/legacy-dynamic-trace/with_86box_input.py`及`tools/legacy-dynamic-trace/build/86box-vminput`；不是产品仓同名目录或猜测`/tmp/86box-vminput`。先确认存在，在后台准备整组命令。
+- A光驱当前Qt控件为窗口内`AXImage`，描述`光盘 1 (ATAPI): …`，不暴露AX动作。旧工具只找菜单项会失配。已实机成功的备用是：精确PID/窗口与输入锁→依据刚读控件几何普通右键→定位可见弹出菜单项→普通点击已存在的批准只读ISO历史项→立即归还前台→`lsof -a -p 当前PID ISO`回读。隐藏主菜单和可见上下文菜单有同名历史项，必须按当前可见弹出窗口几何唯一匹配，不能简单取第一个；不打印整个系统菜单或近期文件。
+- 只读盘成功例含TICK.EXE/REMOTE.EXE。窗口媒体标签或点击返回0不能证明已挂载；还需句柄及实际盘内容/制品SHA。原生Open确曾打开，但GoTo快捷键两次无实际变化；该快捷键路线没有成功证据，不继续盲发或把AXFocusedWindow成功当文件选择成功。
+- cmd存在但被游戏盖住时，已验证一次普通Alt+Tab可恢复实际提示符；先看提示符再输入。普通命令组开始0.8秒已验证消费间隔；`tasklist`先看到运行中再回看同命令完成输出，别立即重复。控件或焦点变化就停止该组。仅“输入已发送”不能核来宾PID。
+- 本次完整14-record原客户端self采样：明确账号页后复用`session.py relogin --verified-stage credentials`，只有实际截图已确认账号才可`--remembered-account`；从credentials到默认进入世界动作54.242秒，紧接读取self14包11.121秒。主菜单第一次43.612秒动作序列实际仍在主菜单，保留FAIL，不靠后续成功抹掉。初入之后不要再开始长文档阅读/编译/路径研究，把接收器和全部命令预先准备。
+- 已挂旧REMOTE制品SHA `331ea5997d12fa9b020d2dac2b343771cf33680b214182a57e7c024d0844fbfe`发送456-byte内存+clock组合；必须使用现成`collect_remote_actor_series.py --samples 1 --require-guest-clocks`。旧`collect_remote_camera_actor_v1.py`只接受412-byte，配错将全部丢弃。先READY再guest执行，单UDP端口顺序用，独立nonce/目录；首失败停止批量，保留失败与guest页/错误码。self COMPLETE不等于其他handle存在或字体/画面一致。
+- Windows命令路径只生成一个反斜杠；先在后台校验最终argv，不把JSON展示中的转义当实际路径。游戏PID与宿主86Box PID不得混用。此次handle5零包仍INCOMPLETE，不能推断Actor不存在；新只读v2的诊断/缓存矩阵尚未guest验，不记录成成功。
+
+同一窗口后台另有60条绑定样本，连接正常而非退出根因已修复；两个字段时间并不构成原子画面。原版与我方角色/地图/相机条件仍未对齐，不能称同条件一致。复用的是已证步骤；不保留历史PID为执行常量，不新增注入或任意地址RPC，不占B，不用这份记录降低完整目标/发布硬门。
+
+
+### 2026-10-06新测试身份切换：实际解释器与计时纠错
+
+需要SMB/MySQL授权内存凭据读取时，复用已安装依赖的`/Users/kemi/coding/xyOnlie/.venv/bin/python`；系统`python3`在本次读取前即报impacket缺失，不应重装或反复猜环境。凭据不进argv/文件。换新账号禁止remembered-account，原世界先底栏设置(776,582)→登出(750,550)→等安全倒数终态→核主菜单，再走成熟登录。60秒session在显式覆盖账号耗时后可能缺进图观察预算；本次55.979秒发进图、57.143秒记录WORLD_OBSERVATION_BUDGET_INSUFFICIENT，保留FAIL，回读真实终态，不能因此重启健康VM或重复登录。后续实际新Role280/281前后端同时在线已证；不据此声称60秒全流程通过。只操作A，不暂停B。
