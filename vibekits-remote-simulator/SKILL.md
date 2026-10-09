@@ -1,6 +1,6 @@
 ---
 name: vibekits-remote-simulator
-description: "Use when the user gives a 6–16 digit VibeKits device ID and asks to debug that remote computer/device, especially Mac-to-Android-PAD remote ADB, or inspect apps, logs, system, transfers and software through 远程仿真. Connect through VibeKits P2P/relay, never a remote-desktop UI."
+description: "Use when the user gives a 6–16 digit VibeKits device ID and asks to debug that remote computer/device, especially Mac-to-Android-PAD remote ADB, or inspect apps, logs, system, transfers and software through 远程仿真. Also use for uploading and deploying applications to saved SSH/SFTP servers without VibeKits. Device simulation uses VibeKits P2P/relay; server deployment uses saved SSH/SFTP profiles, never a remote-desktop UI."
 ---
 
 # VibeKits remote simulator
@@ -15,6 +15,10 @@ A device ID and an authorized remote-simulation endpoint are enough to start. Th
 4. For a read-only inventory, obtain installed apps with `vibekits.device.applications` using a bounded limit. Obtain OS/host details from connection metadata or a narrow read-only query when no dedicated tool exists. For a UI defect, compare the installed build, process state, bounded logs, target window/AX state and a diagnostic frame where permission allows; do not infer a cause merely from a successful connection.
 5. Only perform the installation, removal, app control, UI action, transfer or settings change that the current request actually authorizes. An install result alone is not verification: check version, launch state and the reported behavior on the target. Keep the affected app's working functionality and rollback path in scope.
 6. Call `vibekits.simulator.disconnect` on completion or a blocking error. Report what was actually observed, which route/identity was verified, what changed, and which claims remain unverified.
+
+## 仿真断联的强制恢复路线
+
+仿真断联后必须转查已登记、获授权的同机远程桌面，按 [既有恢复手册](references/channel-recovery-playbook-20261006.md) 排查并恢复原仿真；不把一次仿真失败当作整机离线或任务结束。远程桌面黑屏或输入不响应时，核对同机身份、焦点、浏览模式、权限和日志，必要时用同机已授权文件传输入口或可信备用管理通道读取原事务。恢复后必须原 ID/指纹、实际版本、MCP只读调用和目标房间实时心跳复验。已确认离线桌面不连接；不接受身份变化或绕过审批；在途事务先对账，不重复启动。此路线用于已有授权设备的故障恢复，正常仿真连接仍直接使用VibeKits工具。
 
 ## Windows script execution
 
@@ -31,3 +35,5 @@ For a KEMI Market app upgrade on a remote device, follow [the simulator-based ma
 When a device ID returns `Remote desktop is offline`, follow [the channel recovery guide](references/channel-recovery.md) before calling the physical computer offline. Record the failure and the verified recovery in that guide so subsequent colleagues can reproduce the diagnosis.
 
 When online IDs cannot be called after a network or local App change, read [the network-switch incident recovery](references/network-switch-incident-20260930.md). Verify the current controller bridge before judging the remote device offline; a cluster heartbeat and a simulator connection are separate observations.
+
+For uploading or deploying another application, including an SSH server without VibeKits, read [server file deployment](references/server-file-deployment.md). Use saved SSH/SFTP profile tools for that server; do not require a simulator ID or install VibeKits.
