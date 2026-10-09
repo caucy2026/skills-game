@@ -129,3 +129,14 @@ ACK路径必须同时匹配实际验收路径和安装目录。619曾因遗留58
 - 源码通过不等最终包通过。候选必须绑定冻结源、实际包版本/签名/hash、真实旧授权覆盖、原ID重新连接、MCP只读调用、客户端入房/云端心跳及资源趋势。595失败已回退；596尚未完成公证及真机门禁时不能宣称舰队稳定。
 
 公开证据：[并发首失败](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC_FD_CONCURRENT_ADMISSION_FAILURE_20261010.json)、[修复与范围](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC_FD_CONCURRENT_RESERVATION_SOURCE_20261010.json)。保留所有既有身份、数据、签名事务和恢复入口，不因资源故障重复安装或签名。
+
+
+## 2026-10-10：CLOSED探针套接字导致句柄耗尽
+
+597真实主进程FD104→224→256，其中大量是CLOSED TCP127.0.0.1:22。CLOSED状态不代表应用已释放句柄，不能当TIME_WAIT去调整系统网络参数或重启SSHD。只读就绪探针未消费读流，仅Socket.close结束写端，仍持有读端资源；GitHub的TCP/TLS探针也有同类写法。改为Socket.destroy释放双向资源，不改服务、密钥或权限。不要把ServerSocket.close或业务协议的有意半关闭按文字匹配统一替换。
+
+独立自有服务器60次旧探针增加60FD且退出挂住；修后三轮每轮60次FD增长0、进程组清理完毕。SSH9项/GitHub3项回归通过。597签名包不含该修复，正常退出重启只算止损；598后续候选仍须最终包实装、五分钟以上覆盖原复发窗口、真实原ID/MCP/房间与资源趋势通过才可关闭事故。记录观察间隔，不把单点或源码测试称长期稳定。
+
+升级期间读取UI可能重新拉起已退出程序：退出至目录换包只核白盒PID/路径/出生时间，不能反复getApp或打开旧App。发现并发同映像仍中止换包，先对账归属。597旧升级器CONCURRENT_OWNER_REJECTED并未替换包或回退；低RSS同映像残留不等于新版本主实例。只处理已验证本次归属的精确PID，保留回退及失败证据，不移除并发保护。
+
+证据：[真实泄漏与修复范围](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC597_CLOSED_SSH_PROBE_SOCKET_LEAK_20261010.json)、[旧升级器中止及恢复](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC597_LEGACY_UPDATE_CONCURRENT_OWNER_REJECTED_20261010.json)。父退出隔离测试三次子进程正常exec，不能把父退出单独定为所有孤儿进程根因。
