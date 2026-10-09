@@ -119,3 +119,13 @@ ACK路径必须同时匹配实际验收路径和安装目录。619曾因遗留58
 - PIN取证若仿真黑帧，使用当前登录Session、原run/父子PID及birth固定的截图辅助程序；本轮DPI不匹配造成窗口裁切，设辅助进程DPI awareness后才完整显示空框。仅在用户输入前捕获、视觉检查并展示；不读控件值、输入PIN或在输入后重拍。
 
 本轮公开回退证据：[Mac595本机失败与回退](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC595_CONTROL_BRIDGE_ROLLBACK_20261010.json)、[445备用通道与576恢复](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC445_595_ROLLBACK576_20261010.json)。这些实证不覆盖长期稳定、模型业务或全舰队通过。
+
+
+## 2026-10-10：Mac文件句柄耗尽与并发启动预留
+
+- 控制桥EOF/reset而App和监听仍存活，先取精确进程路径、创建时间、受限资源元数据与线程栈，不把它当远端物理离线。Dart3.11.5在子进程登记阶段文件句柄不足的独立复现会留下未激活子进程并阻塞退出；这个机制已证实，但不能据此断言所有现场句柄增长的来源。
+- 单次启动前检查不足以保护并发：同一进程内八个重叠启动可以同时通过32句柄余量检查，随后耗尽并挂住。修复在应用同一isolate中同步预留在途启动的句柄成本，成功或失败finally释放；不改全局limit、不排队等待、不改变原argv/环境/句柄与流。Process.run预留保守保持到完成。跨isolate、原生或未接入入口不自动受保护，必须单独审计。
+- 在独立进程组和自身RLIMIT64内做重叠子进程负控，控制侧有硬截止并只清理该组；禁止压低真实App限制或故意压垮工作设备。修后三轮重叠启动、明确资源不足拒绝、启动失败后再启动通过；65项受影响源码回归通过。测试退出0仍须检查真实断言、无残留进程及恢复，不能只看包装脚本。
+- 源码通过不等最终包通过。候选必须绑定冻结源、实际包版本/签名/hash、真实旧授权覆盖、原ID重新连接、MCP只读调用、客户端入房/云端心跳及资源趋势。595失败已回退；596尚未完成公证及真机门禁时不能宣称舰队稳定。
+
+公开证据：[并发首失败](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC_FD_CONCURRENT_ADMISSION_FAILURE_20261010.json)、[修复与范围](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC_FD_CONCURRENT_RESERVATION_SOURCE_20261010.json)。保留所有既有身份、数据、签名事务和恢复入口，不因资源故障重复安装或签名。
