@@ -153,3 +153,14 @@ Windows595原Stage/签名绑定ISS仍写VersionCode=2564，而程序及PE为2595
 长Windows命令要求上传时，登记upload_file传精确自有文件，核返回bytes/SHA；短命令读取同份bytes、核SHA后执行审阅scriptblock。一次性意图先于派发持久化。现有项目工具：https://github.com/caucy2026/vibekits/blob/main/tool/windows/invoke_verified_simulator_script.py 。这不是ExecutionPolicy拒绝后的绕行；不改策略、不重放未知事务。PS5 JSON数组先核Schema/Count，避免嵌套数组导致误判。备份验证预算与升级600秒守护分开；复制完成且旧验证者明确终止后只补验证，不重复制或延长升级守护。
 
 证据：https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC132_598_APPLY_PRELAUNCH_FAILURE_20261010.json 、RELAY_IDLE_SSH_KEEPALIVE_20261010.json 、WINDOWS595_INSTALLER_REGISTRY_MISMATCH_20261010.json。当前不证明七台长期稳定或业务任务通过。
+
+
+## Cold Windows SSH discovery and retained-connection evidence (2026-10-10)
+
+A cloud heartbeat, running App, or retained SSH/MCP request does not prove that a new simulation connection works. After an authorized overlay, perform one deliberate disconnect and fresh original-ID connection, then verify the current PID/build, host fingerprint, actual tool request and fresh cloud room heartbeat. Do not repeatedly reconnect after the same unexplained failure.
+
+Windows595 returned HTTP500 at key_status while the same frozen endpoint discovery function reproduced TimeoutException after 5.035 seconds; its exact PowerShell child succeeded at 10.060 seconds. A desktop-context probe took 7.334 seconds. The actual595 process was elevated. These measurements establish a premature discovery deadline, rather than a reason to reset keys, alter ACLs or repeat consent. Match the frozen script hash and real process context before transferring this conclusion to another build.
+
+An observation timeout is not child termination. Track the same PID/lifetime through exit; coalesce concurrent discovery within the App, bound captured output, and keep failed cleanup occupied until actual exit. Source regression PASS is not signed-device PASS. The new owned probe has a15-second execution budget after Process.start resolves, with up to5 seconds for cleanup; OS process creation has no independent deadline, and the existing sshd-T path remains outside this fix. Do not claim an end-to-end wall-time guarantee or extend a600-second install guardian.
+
+When Office shows a frozen viewport despite a live session, inspect the exact native window and current frame. The registered standard-window AX zoom action restored repaint in this incident. Verify a current frame before the next GUI action; do not stack blind clicks. Prefer the primary VibeKits background channel and minimize Office after the necessary recovery or fixed diagnostic launcher action.
