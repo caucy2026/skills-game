@@ -140,3 +140,16 @@ ACK路径必须同时匹配实际验收路径和安装目录。619曾因遗留58
 升级期间读取UI可能重新拉起已退出程序：退出至目录换包只核白盒PID/路径/出生时间，不能反复getApp或打开旧App。发现并发同映像仍中止换包，先对账归属。597旧升级器CONCURRENT_OWNER_REJECTED并未替换包或回退；低RSS同映像残留不等于新版本主实例。只处理已验证本次归属的精确PID，保留回退及失败证据，不移除并发保护。
 
 证据：[真实泄漏与修复范围](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC597_CLOSED_SSH_PROBE_SOCKET_LEAK_20261010.json)、[旧升级器中止及恢复](https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC597_LEGACY_UPDATE_CONCURRENT_OWNER_REJECTED_20261010.json)。父退出隔离测试三次子进程正常exec，不能把父退出单独定为所有孤儿进程根因。
+
+
+## 2026-10-10：中继静默断开与修复未部署
+
+132的原生转发约33秒后peer reset，与hbbr Timeout同刻；原ID和指纹保持。静默40秒SSH失败，原可信隧道、原密钥及known_hosts下添加ServerAliveInterval=10和ServerAliveCountMax=3，独立40秒对照成功。下游identity_mismatch不能单独证明身份变化，不重置密钥或关闭TLS。先保存同请求、原生与服务时间证据，再分层恢复。
+
+源码通过不等于运行包修复。602实际SSH argv缺上述保活两项，StrictHostKeyChecking=yes与BatchMode=yes仍在，40秒测试继续失败。核实际App/PID及脱敏参数，只输出保活与信任字段；不输出完整命令、私钥和凭据。未知升级先对账，不重复安装。
+
+Windows595原Stage/签名绑定ISS仍写VersionCode=2564，而程序及PE为2595。244PE/签名没有覆盖注册表版本。复用既有安装器版本检查，核AppVersion、PE、输出名、VersionCode及原AppId一致；不改已签字节。修封装复用已签内层及卸载runtime，新外壳另验签名/哈希；实装后读回原账户登记、原ID/授权/MCP/房间。外壳报告Bytes可能是签前大小，应核最终文件实际字节。
+
+长Windows命令要求上传时，登记upload_file传精确自有文件，核返回bytes/SHA；短命令读取同份bytes、核SHA后执行审阅scriptblock。一次性意图先于派发持久化。现有项目工具：https://github.com/caucy2026/vibekits/blob/main/tool/windows/invoke_verified_simulator_script.py 。这不是ExecutionPolicy拒绝后的绕行；不改策略、不重放未知事务。PS5 JSON数组先核Schema/Count，避免嵌套数组导致误判。备份验证预算与升级600秒守护分开；复制完成且旧验证者明确终止后只补验证，不重复制或延长升级守护。
+
+证据：https://github.com/caucy2026/vibekits/blob/main/docs/acceptance/MAC132_598_APPLY_PRELAUNCH_FAILURE_20261010.json 、RELAY_IDLE_SSH_KEEPALIVE_20261010.json 、WINDOWS595_INSTALLER_REGISTRY_MISMATCH_20261010.json。当前不证明七台长期稳定或业务任务通过。
